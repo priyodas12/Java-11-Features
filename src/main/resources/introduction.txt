@@ -1,0 +1,9 @@
+1.Http Client API
+2.Local Variable Syntax for Lambda Parameters
+3.String API changes
+4.Deprecations and Removals
+5.Single File Source Code programs
+6.Garbage Collection-ZGC,Epsilon
+7.New API for Predicate and File system
+8.Flight Recorder.
+
