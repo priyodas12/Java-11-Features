@@ -7,3 +7,17 @@
 7.New API for Predicate and File system
 8.Flight Recorder.
 
+EpsilonGc:(For Performance Analysis/Testing)
+-XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC
+
+No Op garbage collector.
+Allocates but does not reclaim.
+Once heap memory exhausts JVM shutdowns.
+
+used to test short living jobs/batch jobs
+
+ZGC:
+Scalable Low latency GC.
+Concurrent GC(GC thread runs along with application Threads)
+Max pause time is 10millisecond
+Multi-Terabyte Heap Size.
