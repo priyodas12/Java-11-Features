@@ -1,7 +1,5 @@
 package io.priyotech;
 
-import com.google.gson.Gson;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -9,7 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
-public class HttpApiImpl {
+public class HttpClientAPIImpl {
     static final String endPoint = "http://www.boredapi.com/api/activity?participants=1";
 
     public static void main(String[] args) {
@@ -17,20 +15,20 @@ public class HttpApiImpl {
         try {
             HttpClient httpClient = HttpClient.newBuilder()
                     .connectTimeout(Duration.ofSeconds(2))
-                    .build();
+                    .build();/**builder pattern in action*/
 
             HttpRequest httpRequest = HttpRequest.newBuilder()
                     .uri(URI.create(endPoint))
                     .GET()
-                    .build();
+                    .build();/**builder pattern in action*/
 
+            /**BodyHandlers converts response into string*/
             response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         } finally {
             if (response != null) {
-                Gson gson = new Gson();
-                System.out.println(gson.toJson(response.body()));
+                System.out.println(response.body());
             } else {
                 System.out.println("No Response from boredApi...");
             }

@@ -8,8 +8,8 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
-public class HttpApiAsyncImpl {
-    static final String endPoint="http://www.boredapi.com/api/activity?participants=2";
+public class HttpClientAPIAsyncImpl {
+    static final String endPoint="http://www.boredapi.com/api/activity?participants=222";
 
     public static void main(String[] args) {
         CompletableFuture<HttpResponse<String>> futureResponse = null;
@@ -31,7 +31,7 @@ public class HttpApiAsyncImpl {
                 .exceptionally(ex -> "Something wend wrong while fetching response from boredAPI: "+ex.getMessage())
                 .thenAccept(System.out::println);
 
-        futureResponse.join();
+        futureResponse.join();//main thread wait for the result.
 
     }
 }
